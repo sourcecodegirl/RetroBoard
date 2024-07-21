@@ -1,0 +1,236 @@
+/* Base styles */
+
+:root {
+  --wentwell-color: #509E1B;
+  --toimprove-color: #3679C4;
+  --actionitems-color: #A1365E;
+  --primary-color: #343434;
+  --background-color: #f2f1f1;
+  --button-text-color: #606060;
+  --button-background-color: #E7E4E4;
+  --disabled-color: #ededed;
+  --hover-color: #767676;
+  --input-color: #2d2d2d;
+  --title-color: #F1EAD5;
+  --alpha-color: rgba(255, 255, 255, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overscroll-behavior: none;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: "Radio Canada", sans-serif;
+  background-color: var(--background-color);
+}
+
+#root h1 {
+  font-family: "Fredericka the Great", serif;
+  font-size: 5rem;
+  margin: 0;
+  padding: 0;
+  color: var(--primary-color);
+}
+
+.draggable {
+  cursor: move;
+}
+
+/* Layout */
+
+.RetroApp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.controlLayout {
+  padding: 0.75rem 0 0.75rem 0.75rem;
+  margin: 0;
+  text-align: right;
+}
+
+.RetroApp.row {
+  flex-direction: row;
+}
+
+.RetroApp.column {
+  flex-direction: column;
+}
+
+/* Category */
+
+.RetroCategory {
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1;
+  min-width: 320px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.RetroCategory h2 {
+  font-family: "Radio Canada", sans-serif;
+  color: var(--title-color);
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  padding: 0 0 1rem 0;
+  border-bottom: 1px solid var(--alpha-color);
+}
+
+/* Card */
+
+.RetroCard {
+  background-color: var(--alpha-color);
+  border-radius: 8px;
+  padding: 1rem 1rem;
+  margin: 1rem 0 0.25rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+  position: relative;
+}
+
+.RetroCard:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.move-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: move;
+  color: var(--button-text-color);
+}
+
+/* Button */
+
+.button {
+  background-color: transparent;
+  color: var(--button-text-color);
+  border: none;
+  padding: 0;
+  margin: 8px 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.button:focus {
+  outline-color: transparent;
+}
+
+.layoutToggle {
+  color: var(--primary-color);
+  background-color: transparent;
+  border: none;
+  vertical-align: middle;
+  font-size: 36px;
+}
+
+.clearAll {
+  color: var(--primary-color);
+  background-color: transparent;
+  border: none;
+  vertical-align: middle;
+  font-size: 46px;
+}
+
+.clearAll:disabled {
+  cursor: not-allowed;
+  color: var(---disabled-color);
+  background-color: transparent;
+}
+
+.add {
+  color: var(--alpha-color);
+  font-size: 36px;
+  font-weight: 800;
+  padding: 0;
+  margin: 0;
+  transition: transform 0.3s ease;
+}
+
+.delete,
+.like,
+.dislike,
+.left,
+.right,
+.up,
+.down {
+  color: var(--primary-color);
+  font-size: 24px;
+  vertical-align: bottom;
+}
+
+.add:hover {
+  transform: scale(1.5);
+}
+
+.layoutToggle:hover,
+.clearAll:hover,
+.delete:hover,
+.like:hover,
+.dislike:hover,
+.left:hover,
+.right:hover,
+.up:hover,
+.down:hover {
+  color: var(--hover-color);
+}
+
+.left,
+.right,
+.up,
+.down {
+  font-size: 26px;
+}
+
+/* Input */
+
+.textbox {
+  color: var(--input-color);
+  background-color: transparent;
+  font-family: "Radio Canada", sans-serif;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  resize: none;
+  width: calc(100% - 5px);
+  font-size: 1em;
+  box-shadow: none;
+  min-height: 60px;
+  overflow: hidden;
+}
+
+.textbox:focus {
+  border: none;
+  background-color: transparent;
+  outline-color: transparent;
+}
+
+/* Smaller Screens */
+
+@media (max-width: 768px) {
+  .RetroApp {
+    flex-direction: column;
+  }
+
+  .layoutToggle {
+    display: none;
+  }
+}
