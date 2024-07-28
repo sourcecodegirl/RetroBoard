@@ -66,10 +66,9 @@ const RetroCard = ({
   if (!card.id) {
     console.warn('Card ID is missing, generating random ID.');
     card.id = generateRandomId();
-    return null;
   }
 
-  return (
+    return (
     <div 
       className="RetroCard draggable" 
       draggable 
@@ -87,43 +86,47 @@ const RetroCard = ({
         value={card.text}
         id={card.id}
         onChange={adjustHeight}
-        title="Click here to edit text"
+        title="Click here to enter text"
       />
       <div className="button-group">
+        <div className="like-dislike-buttons">
+          <button type="button" className="button" onClick={() => likeCard(card.id)} title="Like">
+            <span className="material-symbols-outlined like">thumb_up</span> {card.likes} 
+          </button>
+          <button type="button" className="button" onClick={() => dislikeCard(card.id)} title="Dislike">
+            <span className="material-symbols-outlined dislike">thumb_down</span> {card.dislikes}
+          </button>
+        </div>
         <button
           type="button"
-          className="button"
+          className="button delete-button"
           onClick={() => deleteCard(card.id)}
           title="Delete Card"
         >
           <span className="material-symbols-outlined delete">delete</span>
         </button>
-        <button type="button" className="button" onClick={() => likeCard(card.id)} title="Like">
-          <span className="material-symbols-outlined like">thumb_up</span> {card.likes} 
-        </button>
-        <button type="button" className="button" onClick={() => dislikeCard(card.id)} title="Dislike">
-          <span className="material-symbols-outlined dislike">thumb_down</span> {card.dislikes}
-        </button>
-        <button 
-          type="button" 
-          className="button" 
-          onClick={() => moveCard(card.id, layout === 'column' ? 'up' : 'left')} 
-          title={getTooltip(layout === 'column' ? 'up' : 'left')}
-        >
-          <span className="material-symbols-outlined up left">
-            {layout === 'column' ? 'move_selection_up' : 'move_selection_left'}
-          </span>
-        </button>
-        <button 
-          type="button" 
-          className="button" 
-          onClick={() => moveCard(card.id, layout === 'column' ? 'down' : 'right')} 
-          title={getTooltip(layout === 'column' ? 'down' : 'right')}
-        >
-          <span className="material-symbols-outlined down right">
-            {layout === 'column' ? 'move_selection_down' : 'move_selection_right'}
-          </span>
-        </button>
+        <div className="move-buttons">
+          <button 
+            type="button" 
+            className="button" 
+            onClick={() => moveCard(card.id, layout === 'column' ? 'up' : 'left')} 
+            title={getTooltip(layout === 'column' ? 'up' : 'left')}
+          >
+            <span className="material-symbols-outlined up left">
+              {layout === 'column' ? 'move_selection_up' : 'move_selection_left'}
+            </span>
+          </button>
+          <button 
+            type="button" 
+            className="button" 
+            onClick={() => moveCard(card.id, layout === 'column' ? 'down' : 'right')} 
+            title={getTooltip(layout === 'column' ? 'down' : 'right')}
+          >
+            <span className="material-symbols-outlined down right">
+              {layout === 'column' ? 'move_selection_down' : 'move_selection_right'}
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );
