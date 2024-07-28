@@ -58,6 +58,7 @@ const RetroCard = ({
     onDrop(e, card.id);
   };
 
+  // generate random id if one doesn't exist
   const generateRandomId = () => {
     return Date.now() + Math.random().toString(36).substring(2, 9);
   };
