@@ -127,6 +127,12 @@ body {
   outline-color: transparent;
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  color: var(---disabled-color);
+  background-color: transparent;
+}
+
 .layoutToggle {
   color: var(--primary-color);
   background-color: transparent;
