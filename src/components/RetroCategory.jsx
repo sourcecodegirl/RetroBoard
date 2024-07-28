@@ -33,8 +33,8 @@ const RetroCategory = ({
     >
       <h2>{category}</h2>
       <button 
-        type='button'
-        className='ButtonAdd button button-default'
+        type="button"
+        className="ButtonAdd button button-default"
         onClick={() => addCard(category)} 
         title="Add New Card"
       >

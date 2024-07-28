@@ -20,21 +20,21 @@ const RetroCard = ({
 
   const currentCategoryIndex = categories.indexOf(card.category);
 
-  // change tooltip to display left or right or up or down based on the row or column layout
+  // change tooltip to display left or right or up or down based on layout direction
   const getTooltip = (direction) => {
     const indexChange = direction === 'left' || direction === 'up' ? -1 : 1;
     const newIndex = (currentCategoryIndex + indexChange + categories.length) % categories.length;
     return `Move to ${categories[newIndex]}`;
   };
 
-  // increase textarea when more text is typed
+  // expand textarea when more text is typed
   const adjustHeight = (event) => {
     event.target.style.height = 'auto';
     event.target.style.height = `${event.target.scrollHeight}px`;
     updateCardText(card.id, event.target.value);
   };
 
-  // keep textarea height increased
+  // keep textarea height expanded
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -58,8 +58,13 @@ const RetroCard = ({
     onDrop(e, card.id);
   };
 
+  const generateRandomId = () => {
+    return Date.now() + Math.random().toString(36).substring(2, 9);
+  };
+
   if (!card.id) {
-    console.warn("Card ID is missing!");
+    console.warn('Card ID is missing, generating random ID.');
+    card.id = generateRandomId();
     return null;
   }
 
@@ -79,6 +84,7 @@ const RetroCard = ({
         ref={textareaRef}
         placeholder="Enter text here"
         value={card.text}
+        id={card.id}
         onChange={adjustHeight}
         title="Click here to edit text"
       />
