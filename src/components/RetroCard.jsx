@@ -44,6 +44,7 @@ const RetroCard = ({
   }, [card.text]);
 
   // drag and drop cards
+  // credit: https://www.bomberbot.com/reactjs/implementing-drag-and-drop-in-react-without-libraries/ and https://www.youtube.com/watch?v=jaBjORBot48
   const handleDragStart = (e) => {
     e.dataTransfer.setData('text/plain', card.id);
     e.dataTransfer.setDragImage(cardRef.current, 0, 0);
