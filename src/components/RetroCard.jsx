@@ -16,6 +16,7 @@ const RetroCard = ({
   onDrop = () => {},
 }) => {
 
+  const cardRef = useRef(null);
   const textareaRef = useRef(null);
 
   const currentCategoryIndex = categories.indexOf(card.category);
@@ -45,6 +46,7 @@ const RetroCard = ({
   // drag and drop cards
   const handleDragStart = (e) => {
     e.dataTransfer.setData('text/plain', card.id);
+    e.dataTransfer.setDragImage(cardRef.current, 0, 0);
     onDragStart(e, card.id);
   };
 
@@ -68,15 +70,19 @@ const RetroCard = ({
     card.id = generateRandomId();
   }
 
-    return (
-    <div 
-      className="RetroCard draggable" 
-      draggable 
-      onDragStart={handleDragStart} 
-      onDragOver={handleDragOver} 
+  return (
+    <div
+      className="RetroCard"
+      ref={cardRef}
+      onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      <div className="move-icon" title="Drag to move">
+      <div
+        className="move-icon"
+        draggable
+        onDragStart={handleDragStart}
+        title="Drag to move"
+      >
         <span className="material-symbols-outlined">drag_indicator</span>
       </div>
       <textarea
@@ -91,7 +97,7 @@ const RetroCard = ({
       <div className="button-group">
         <div className="like-dislike-buttons">
           <button type="button" className="button" onClick={() => likeCard(card.id)} title="Like">
-            <span className="material-symbols-outlined like">thumb_up</span> {card.likes} 
+            <span className="material-symbols-outlined like">thumb_up</span> {card.likes}
           </button>
           <button type="button" className="button" onClick={() => dislikeCard(card.id)} title="Dislike">
             <span className="material-symbols-outlined dislike">thumb_down</span> {card.dislikes}
@@ -106,20 +112,20 @@ const RetroCard = ({
           <span className="material-symbols-outlined delete">delete</span>
         </button>
         <div className="move-buttons">
-          <button 
-            type="button" 
-            className="button" 
-            onClick={() => moveCard(card.id, layout === 'column' ? 'up' : 'left')} 
+          <button
+            type="button"
+            className="button"
+            onClick={() => moveCard(card.id, layout === 'column' ? 'up' : 'left')}
             title={getTooltip(layout === 'column' ? 'up' : 'left')}
           >
             <span className="material-symbols-outlined up left">
               {layout === 'column' ? 'move_selection_up' : 'move_selection_left'}
             </span>
           </button>
-          <button 
-            type="button" 
-            className="button" 
-            onClick={() => moveCard(card.id, layout === 'column' ? 'down' : 'right')} 
+          <button
+            type="button"
+            className="button"
+            onClick={() => moveCard(card.id, layout === 'column' ? 'down' : 'right')}
             title={getTooltip(layout === 'column' ? 'down' : 'right')}
           >
             <span className="material-symbols-outlined down right">
@@ -130,7 +136,7 @@ const RetroCard = ({
       </div>
     </div>
   );
-}
+};
 
 RetroCard.propTypes = {
   layout: PropTypes.string.isRequired,

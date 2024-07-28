@@ -99,7 +99,7 @@ body {
 .RetroCard {
   background-color: var(--alpha-color);
   border-radius: 8px;
-  padding: 1rem 0.75rem 0.5rem 0.75rem;
+  padding: 1rem 0.75rem 0.25rem 0.75rem;
   margin: 1rem 0 0.25rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease;
@@ -118,7 +118,7 @@ body {
   color: var(--button-text-color);
   border: none;
   padding: 0;
-  margin: 8px 6px;
+  margin: 8px 5px;
   cursor: pointer;
   font-size: 1rem;
 }
@@ -229,7 +229,9 @@ body {
   font-family: "Radio Canada", sans-serif;
   border: none;
   border-radius: 8px;
-  padding: 10px;
+  padding: 0 6px 0 2px;
+  margin: 0;
+  line-height: 1.5;
   resize: none;
   width: calc(100% - 5px);
   font-size: 1em;
