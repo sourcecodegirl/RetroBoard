@@ -2,6 +2,8 @@
 
 RetroBoard is a React-based web app I've built for creating and managing retrospective boards. It provides a collaborative space for team restrospectives allowing users to add, edit, and move cards across the three categories: Went Well, To Improve, and Action Items.
 
+![RetroBoard](./src/assets/retroboard_screenshot.jpg)
+
 ## Features
 
 - **Move Cards:** Cards can be moved between categories using drag and drop or with the move buttons based on layout direction.
