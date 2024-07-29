@@ -29,6 +29,7 @@ const RetroCard = ({
   };
 
   // expand textarea when more text is typed
+  // credit: https://dev.to/gabrielmlinassi/how-to-build-a-dynamic-resizable-textarea-38pf
   const adjustHeight = (event) => {
     event.target.style.height = 'auto';
     event.target.style.height = `${event.target.scrollHeight}px`;
