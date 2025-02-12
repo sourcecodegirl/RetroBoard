@@ -1,6 +1,6 @@
 # RetroBoard
 
-RetroBoard is a React-based web app I've built for creating and managing retrospective boards. It provides a collaborative space for team restrospectives allowing users to add, edit, and move cards across the three categories: Went Well, To Improve, and Action Items.
+RetroBoard is a React-based web app I've built for creating and managing retrospective boards. It provides a collaborative space for team restrospectives allowing users to add, edit, and move cards across the three categories: Went Well, To Improve, and Action Items. [See a demo of it here](https://retroboardapp.netlify.app)
 
 ![RetroBoard](./src/assets/retroboard_screenshot.jpg)
 
